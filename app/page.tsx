@@ -22,13 +22,13 @@ export default function PIDVisualizer() {
   const [kd, setKd] = useState(0)
   const [setpoint, setSetpoint] = useState(0)
   const [customSetpoint, setCustomSetpoint] = useState("0")
-  const [data, setData] = useState([])
+  const [data, setData] = useState<{ time: string; setpoint: number; processVariable: number; error: number; integral: number; output: number; disturbance: number; }[]>([])
   const [time, setTime] = useState(0)
   const [isRunning, setIsRunning] = useState(true)
   const [disturbance, setDisturbance] = useState(0)
   const animationRef = useRef<number>()
 
-  const pidController = useCallback((error, integral, lastError, dt) => {
+  const pidController = useCallback((error: number, integral: number, lastError: number, dt: number) => {
     const p = kp * error
     const i = ki * (integral + error * dt)
     const d = kd * (error - lastError) / dt

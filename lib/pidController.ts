@@ -67,7 +67,4 @@ export enum ControllerType {
     return { kp, ki, kd };
   }
   
-  ```typescript file="lib/dataExport.ts"
-  // Removed exportToCSV function here
-  ```
 
